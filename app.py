@@ -14,13 +14,18 @@ model = pickle.load(open('best_tree_classifier.pkl','rb'))
 def Home():
     return render_template('index.html')
 
-@app.route("/",methods=['GET'])
-def Home():
-    age = request.from.get('age')
-    return age
+@app.route("/predict",methods=['GET'])
+def prediction():
+
+    age_user = request.from.get("age")
+
+    return render_template("test.html",age=age_user)
+
+
+
 
 if __name__=='__main__':
     age = Home()
-    print(age)
+    print('age')
     app.run(debug=True)
-    
+     

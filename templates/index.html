@@ -7,44 +7,90 @@
 </head>
 <body>
     <h1><center><i>Welcome to My Machine Learning WebPage</i></center></h1>
-    <from action="/" methord="post">
+    <from action="/predict " methord="post">
 
-     <label>Enter your age in years:</label>
-     <input type="number" name="age" required="required">
-     <br>  
+        <label>Enter your age in years:</label>
+        <input type="number" name="age" required="required">
+        <br>  
 
-     <label>Enter your Height in cms:</label>
-     <input type="number" name="Height" required="required">
-     <br> 
+        <label>Enter your Height in cms:</label>
+        <input type="number" name="Height" required="required">
+        <br> 
 
-     <label>Enter your Weight in years:</label>
-     <input type="number" name="Weight" required="required">
-     <br>
-     
-     <label>Enter your Hi-BP:</label>
-     <input type="number" name="ap_hi" required="required">
-     <br>      
-
-     <label>Enter your Lo-BP:</label>
-     <input type="number" name="ap_lp" required="required">
-     <br>
-     
-     <label>Enter your BMI:</label>
-     <input type="number" name="bmi" required="required">
-     <br>
-     <label>gender</label>
-     <select name="gender">
-        <option values="1">Female</option>
-        <option values="2">Male</option>
-     </select> 
-     <br>
-
-     <label>Cholestrol</label>
-     <select name="Cholestrol">
+        <label>Enter your Weight in years:</label>
+        <input type="number" name="Weight" required="required">
+        <br>
         
+        <label>Enter your Hi-BP:</label>
+        <input type="number" name="ap_hi" required="required">
+        <br>      
+
+        <label>Enter your Lo-BP:</label>
+        <input type="number" name="ap_lp" required="required">
+        <br>
+        
+        <label>Enter your BMI:</label>
+        <input type="number" name="bmi" required="required">
+        <br>
+        <label>gender</label>
+        <select name="gender">
+           <option values="1">Female</option>
+           <option values="2">Male</option>
+        </select> 
+        <br>
+
+        <label>Cholestrol</label>
+        <select name="Cholestrol">
         <option values="1">Normal</option>
         <option values="2">Above Normal</option>
         <option values="3">Well Above Normal</option>
-     </select>
+        </select>
+
+        <br>
+
+        </select>
+        <label>Glucose</label>
+        <select name="Glucose">
+        <option value="1"Normal></option>
+        <option value="2"Above Normal></option>
+        <option value="3"Well above Normal></option>
+        </select>
+
+        <br>
+
+        </select>
+        <label>Smoke</label>
+        <select name="Smoke">
+        <option value="1"Smoker></option>
+        <option value="2"Non_smoker></option>
+        </select>
+
+        <br>
+
+        </select>
+        <label>Alcohol</label>
+        <select name="Alcohol">
+        <option value="1"yes></option>
+        <option value="2"no></option>
+        </select>
+        
+        <br>
+     
+        </select>
+        <label>Active</label>
+        <select name="Active">
+        <option value="1"Physical_Active></option>
+        <option value="2"No_Physical_Active></option>
+        </select>
+
+        <br>
+        <br>
+        <button type="submit"><center> submit</center></button>
+      </from>
+
+  </label>
+
+  {{age}} 
+
 </body>
 </html>
