@@ -14,18 +14,28 @@ model = pickle.load(open('best_tree_classifier.pkl','rb'))
 def Home():
     return render_template('index.html')
 
-@app.route("/predict",methods=['GET'])
+@app.route("/predict", methods=['POST'])
 def prediction():
+    if request.method == 'POST':
+        age = request.form.get("age")
+        height = request.form.get("height")
+        weight = request.form.get("weight")
+        ap_hi = request.form.get("ap_hi")
+        ap_lo = request.form.get("ap_lo")
+        gender = request.form.get("gender")
+        cholesterol = request.form.get("cholesterol")
+        glucose = request.form.get("Glucose")
+        smoke = request.form.get("Smoke")
+        alcohol = request.form.get("Alcohol")
+        active = request.form.get("Actve")
 
-    age_user = request.from.get("age")
-
-    return render_template("test.html",age=age_user)
-
+    return render_template("index.html", age=age, height=height, weight=weight, ap_hi=ap_hi, ap_lo=ap_lo,
+                               gender=gender, cholesterol=cholesterol, glucose=glucose, smoke=smoke,
+                               alcohol=alcohol,active=active)
 
 
 
 if __name__=='__main__':
-    age = Home()
-    print('age')
     app.run(debug=True)
+   
      
