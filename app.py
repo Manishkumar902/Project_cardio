@@ -10,7 +10,7 @@ from sklearn.compose import ColumnTransformer
 
 app = Flask(__name__)
 
-model = pickle.load(open('best_tree_classifier.pkl','rb'))
+# model = pickle.load(open('best_tree_classifier.pkl','rb'))
 
 @app.route("/",methods=['GET'])
 def Home():
@@ -47,26 +47,26 @@ def prediction():
                 'bmi':[bmi],
                 'bp_category':[bp_category]}
         
-        df = pd.DataFrame(data)
-        numerical = ['height', 'weight', 'ap_hi', 'ap_lo', 'gluc', 'alco', 'age_years', 'bmi']
+        # df = pd.DataFrame(data)
+        # numerical = ['height', 'weight', 'ap_hi', 'ap_lo', 'gluc', 'alco', 'age_years', 'bmi']
 
-        CTE = ColumnTransformer(transformers=[('robsc', RobustScaler(), Numerical),
-                                        ('ohe', OneHotEncoder(drop='first', handle_unknown='ignore'), ['bp_category'])
-                            ], remainder='passthrough')
+        # CTE = ColumnTransformer(transformers=[('robsc', RobustScaler(), numerical),
+        #                                 ('ohe', OneHotEncoder(drop='first', handle_unknown='ignore'), ['bp_category'])
+        #                     ], remainder='passthrough')
 
-        df_transformed = CTE.fit_transform(df)
+        # df_transformed = CTE.fit_transform(df)
 
-        pred = model.predict("index.html",data=df.preds)
+        # # pred = model.predict(df_transformed)
 
-        if pred==0:
-            prediction = 'No disease'
-        else:
-            prediction='Disease'
+        # if pred==0:
+        #     prediction = 'No disease'
+        # else:
+        #     prediction='Disease'
 
-
-    return render_template("index.html", age=age, height=height, weight=weight, ap_hi=ap_hi, ap_lo=ap_lo,
-                               gender=gender, cholesterol=cholesterol, glucose=glucose, smoke=smoke,
-                               alcohol=alcohol,active=active,bmi=bmi,bp_category=bp_category)
+# age=age, height=height, weight=weight, ap_hi=ap_hi, ap_lo=ap_lo,
+#                                gender=gender, cholesterol=cholesterol, glucose=glucose, smoke=smoke,
+#                                alcohol=alcohol,active=active,bmi=bmi,bp_category=bp_category
+    return render_template("index.html", test='TEST')
 
 
 
