@@ -20,7 +20,7 @@ def Home():
 def prediction():
     if request.method == 'POST':
         age = float(request.form.get("age"))
-        height = (request.form.get("height"))
+        height = float(request.form.get("height"))
         weight = float(request.form.get("weight"))
         ap_hi = float(request.form.get("ap_hi"))
         ap_lo = float(request.form.get("ap_lo"))
@@ -48,12 +48,12 @@ def prediction():
         inputs.extend(bp_cat)
         inputs = np.array(inputs).reshape(1,-1)
 
-        ct = ColumnTransformer(transformers=[('scaler',RobustScaler(),[0,1,2,3,4,5])],
-                               remainder='passthrough')
-        inputs_transformed = ct.fit(inputs)
+        #ct = ColumnTransformer(transformers=[('scaler',RobustScaler(),[0,1,2,3,4,5])],
+         #                      remainder='passthrough')
+        #inputs_transformed = ct.fit(inputs)
 
         
-        pred = model.predict(inputs_transformed)
+        pred = model.predict(inputs)
 
         if pred[0]==0:
             prediction = 'No disease'
