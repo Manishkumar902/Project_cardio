@@ -10,7 +10,7 @@ from sklearn.compose import ColumnTransformer
 
 app = Flask(__name__)
 
-# model = pickle.load(open('best_tree_classifier.pkl','rb'))
+model = pickle.load(open('xgb_classifier.pkl','rb'))
 
 @app.route("/",methods=['GET'])
 def Home():
@@ -25,7 +25,7 @@ def prediction():
         ap_hi = float(request.form.get("ap_hi"))
         ap_lo = float(request.form.get("ap_lo"))
         gender = float(request.form.get("gender"))
-        cholesterol = float(request.form.get("cholesterol"))
+        cholesterol = float(request.form.get("Cholesterol"))
         glucose = float(request.form.get("Glucose"))
         smoke = float(request.form.get("Smoke"))
         alcohol = float(request.form.get("Alcohol"))
