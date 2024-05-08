@@ -19,55 +19,48 @@ def Home():
 @app.route("/predict", methods=['POST'])
 def prediction():
     if request.method == 'POST':
-        age = request.form.get("age")
-        height = request.form.get("height")
-        weight = request.form.get("weight")
-        ap_hi = request.form.get("ap_hi")
-        ap_lo = request.form.get("ap_lo")
-        gender = request.form.get("gender")
-        cholesterol = request.form.get("cholesterol")
-        glucose = request.form.get("Glucose")
-        smoke = request.form.get("Smoke")
-        alcohol = request.form.get("Alcohol")
-        active = request.form.get("Actve")
-        bmi = request.form.get("bmi")
+        age = float(request.form.get("age"))
+        height = (request.form.get("height"))
+        weight = float(request.form.get("weight"))
+        ap_hi = float(request.form.get("ap_hi"))
+        ap_lo = float(request.form.get("ap_lo"))
+        gender = float(request.form.get("gender"))
+        cholesterol = float(request.form.get("cholesterol"))
+        glucose = float(request.form.get("Glucose"))
+        smoke = float(request.form.get("Smoke"))
+        alcohol = float(request.form.get("Alcohol"))
+        active = float(request.form.get("Actve"))
+        bmi = float(request.form.get("bmi"))
         bp_category = request.form.get("bp_category")
 
-        data = {'gender':[gender],
-                'height':[height],
-                'weight':[weight],
-                'ap_hi':[ap_hi],
-                'ap_lo':[ap_lo],
-                'cholesterol':[cholesterol],
-                'gluc':[glucose],
-                'smoke':[smoke],
-                'alco':[alcohol],
-                'active':[active],
-                'age_years':[age],
-                'bmi':[bmi],
-                'bp_category':[bp_category]}
+        bp_cat = [0,0,0]
+
+        if bp_category=='Normal':
+            bp_cat[2]=1
+        elif bp_category=='Hypertension Stage 1':
+            bp_cat[0]=1
+        elif bp_category=='Hypertension Stage 2':
+            bp_cat[1]=1
+
+        inputs = [height,weight,ap_hi,ap_lo,age,bmi,gender,
+                  cholesterol,glucose,smoke,alcohol,active]
         
-        # df = pd.DataFrame(data)
-        # numerical = ['height', 'weight', 'ap_hi', 'ap_lo', 'gluc', 'alco', 'age_years', 'bmi']
+        inputs.extend(bp_cat)
+        inputs = np.array(inputs).reshape(1,-1)
 
-        # CTE = ColumnTransformer(transformers=[('robsc', RobustScaler(), numerical),
-        #                                 ('ohe', OneHotEncoder(drop='first', handle_unknown='ignore'), ['bp_category'])
-        #                     ], remainder='passthrough')
+        ct = ColumnTransformer(transformers=[('scaler',RobustScaler(),[0,1,2,3,4,5])],
+                               remainder='passthrough')
+        inputs_transformed = ct.fit(inputs)
 
-        # df_transformed = CTE.fit_transform(df)
+        
+        pred = model.predict(inputs_transformed)
 
-        # # pred = model.predict(df_transformed)
+        if pred[0]==0:
+            prediction = 'No disease'
+        else:
+            prediction='Disease'
 
-        # if pred==0:
-        #     prediction = 'No disease'
-        # else:
-        #     prediction='Disease'
-
-# age=age, height=height, weight=weight, ap_hi=ap_hi, ap_lo=ap_lo,
-#                                gender=gender, cholesterol=cholesterol, glucose=glucose, smoke=smoke,
-#                                alcohol=alcohol,active=active,bmi=bmi,bp_category=bp_category
-    return render_template("index.html", test='TEST')
-
+    return render_template("index.html",data=prediction)
 
 
 if __name__=='__main__':

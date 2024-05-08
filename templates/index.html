@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
-
 <body>
   <h1>
     <center><i>Welcome to My Machine Learning WebPage</i></center>
@@ -17,20 +15,20 @@
     <input type="number" name="age" required="required">
     <br>
 
-    <label>Enter your Height in cms:</label>
-    <input type="number" name="Height" required="required">
+    <label>Enter your Height</label>
+    <input type="number" name="height" required="required">
     <br>
 
-    <label>Enter your Weight in years:</label>
-    <input type="number" name="Weight" required="required">
+    <label>Enter your Weight in kgs:</label>
+    <input type="number" name="weight" required="required">
     <br>
 
-    <label>Enter your Hi-BP:</label>
+    <label>Enter your Hi-BP</label>
     <input type="number" name="ap_hi" required="required">
     <br>
 
-    <label>Enter your Lo-BP:</label>
-    <input type="number" name="ap_lp" required="required">
+    <label>Enter your Lo-BP</label>
+    <input type="number" name="ap_lo" required="required">
     <br>
 
     <label>Enter your BMI:</label>
@@ -38,16 +36,16 @@
     <br>
     <label>gender</label>
     <select name="gender">
-      <option values="1">Female</option>
-      <option values="2">Male</option>
+      <option value="1">Female</option>
+      <option value="2">Male</option>
     </select>
     <br>
 
-    <label>Cholestrol</label>
-    <select name="Cholestrol">
-      <option values="1">Normal</option>
-      <option values="2">Above Normal</option>
-      <option values="3">Well Above Normal</option>
+    <label>Cholesterol</label>
+    <select name="Cholesterol">
+      <option value="1">Normal</option>
+      <option value="2">Above Normal</option>
+      <option value="3">Well Above Normal</option>
     </select>
 
     <br>
@@ -94,15 +92,14 @@
       <option value="Normal">Normal</option>
       <option value="Elevated">Elevated</option>
       <option value="Hypertension Stage 1">Hypertension Stage 1</option>
+      <option value="Hypertension Stage 2">Hypertension Stage 2</option>
       <option value="Hypertension Crisis">Hypertension Crisis</option>
-
-
     </select>
     <br>
-    <br>
     <button type="submit">Submit</button>
-    <input type="submit">SubMit
   </form>
+
+  </label>
 
   {{test}}
   {{ age }}
@@ -118,5 +115,4 @@
   {{ active }}
 
 </body>
-
 </html>
